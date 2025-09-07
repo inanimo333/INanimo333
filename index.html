@@ -9,23 +9,20 @@
 
 <script>
   document.querySelectorAll('.thumb-wrap').forEach(function(box){
-    const yt = (box.getAttribute('data-yt') || '').trim();
+    const yt  = (box.getAttribute('data-yt') || '').trim();
     const img = box.getAttribute('data-img') || '';
     if (yt) {
       const ifr = document.createElement('iframe');
-      ifr.src = 'https://www.youtube.com/embed/' + yt;
+      ifr.src = 'https://www.youtube.com/embed/' + yt; // 例: dQw4w9WgXcQ
       ifr.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
       ifr.allowFullscreen = true;
-      ifr.style.width = '100%';
-      ifr.style.height = '100%';
-      ifr.style.border = '0';
+      ifr.style.cssText = 'width:100%;height:100%;border:0;aspect-ratio:16/9;border-radius:12px';
       box.appendChild(ifr);
     } else if (img) {
       const image = document.createElement('img');
       image.src = img;
-      image.alt = 'ジャケット画像';
-      image.style.width = '100%';
-      image.style.height = 'auto';
+      image.alt = 'ジャケット';
+      image.style.cssText = 'width:100%;height:auto;border-radius:12px;border:1px solid rgba(255,255,255,.2)';
       box.appendChild(image);
     }
   });
