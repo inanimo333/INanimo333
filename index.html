@@ -6,6 +6,31 @@
   <title>INanimO、、」 Official Site</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
+<script>
+  document.querySelectorAll('.thumb-wrap').forEach(function(box){
+    const yt = (box.getAttribute('data-yt') || '').trim();
+    const img = box.getAttribute('data-img') || '';
+    if (yt) {
+      const ifr = document.createElement('iframe');
+      ifr.src = 'https://www.youtube.com/embed/' + yt;
+      ifr.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      ifr.allowFullscreen = true;
+      ifr.style.width = '100%';
+      ifr.style.height = '100%';
+      ifr.style.border = '0';
+      box.appendChild(ifr);
+    } else if (img) {
+      const image = document.createElement('img');
+      image.src = img;
+      image.alt = 'ジャケット画像';
+      image.style.width = '100%';
+      image.style.height = 'auto';
+      box.appendChild(image);
+    }
+  });
+</script>
+  
 <body class="bg-black text-white">
   <!-- Hero -->
   <header class="text-center py-16 bg-gradient-to-b from-zinc-900 to-black">
